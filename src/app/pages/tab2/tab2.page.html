@@ -16,6 +16,10 @@
 </ion-header>
 <ion-content [fullscreen]="true" dark>
   <app-noticias *ngIf="noticias.length > 0; else elseBlock " [noticias]="noticias"></app-noticias>
+  <ion-infinite-scroll threshold="100px" position="bottom" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando noticias...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
   <ng-template #elseBlock>
     <div class="img-no-data">
       <div>

@@ -12,5 +12,8 @@ export class NoticiaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+  abrirNoticia(){
+    console.log(this.noticia.url);
+  }
 
 }

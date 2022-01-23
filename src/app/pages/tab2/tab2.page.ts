@@ -11,6 +11,7 @@ import { NoticiasService } from '../../services/noticias.service';
 export class Tab2Page implements OnInit {
   @ViewChild(IonSegment) segment: IonSegment;
   categorias =['business', 'entertainment', 'general', 'healths', 'cience', 'sports', 'technology'];
+  categoria = 'business';
   noticias: Article[]= [];
   constructor(private noticiasService: NoticiasService) {
   }
@@ -18,15 +19,23 @@ export class Tab2Page implements OnInit {
     // console.log(this.categorias[0]);
     //! no está funcionando
       // this.segment.value = 'business';
-      this.cargarNoticias(this.categorias[0]);
+      this.cargarNoticias(this.categoria);
   }
   cambioCategoria(event){
-    // console.log(event);
-    this.cargarNoticias(event.detail.value);
+    this.noticias = [];
+    this.categoria = event.detail.value;
+    this.cargarNoticias(this.categoria);
   }
-  cargarNoticias(categoria: string){
+  cargarNoticias(categoria: string, event?){
     this.noticiasService.getTopHeadlinesCategorioa(categoria).subscribe( data =>{
-      this.noticias = data.articles;
+      this.noticias.push(...data.articles);
+      if (event) {
+        event.target.complete();
+      }
     });
+  }
+
+  loadData(event){
+    this.cargarNoticias(this.categoria, event);
   }
 }
