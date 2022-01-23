@@ -1,11 +1,12 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar dark>
-    <ion-title>
-      Andres's News
-    </ion-title>
+    <ion-title> Andres's News </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true" dark>
- <app-noticias [noticias]="noticias"></app-noticias>
+  <app-noticias [noticias]="noticias"></app-noticias>
+  <ion-infinite-scroll threshold="150px"  position="bottom" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando noticias...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

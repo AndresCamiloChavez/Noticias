@@ -1,0 +1,19 @@
+ion-segment{
+    background-color: black;
+}
+.img-no-data{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div{
+        margin: auto;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+}

@@ -1,17 +1,27 @@
-<ion-header [translucent]="true">
+<ion-header dark>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Encabezados </ion-title>
   </ion-toolbar>
+  <ion-segment scrollable mode="md" value="business" (ionChange)="cambioCategoria($event)" dark>
+    <ion-segment-button
+      mode="md"
+      color="primay"
+      dark
+      *ngFor="let categoria of categorias"
+      [value]="categoria"
+    >
+      <ion-label text-capitalize>{{categoria}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content [fullscreen]="true" dark>
+  <app-noticias *ngIf="noticias.length > 0; else elseBlock " [noticias]="noticias"></app-noticias>
+  <ng-template #elseBlock>
+    <div class="img-no-data">
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flat_cross_icon.svg/640px-Flat_cross_icon.svg.png" alt="img">
+        <p>No hay noticias</p>  
+      </div>
+    </div>
+  </ng-template>
 </ion-content>
