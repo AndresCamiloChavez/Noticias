@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+// import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
